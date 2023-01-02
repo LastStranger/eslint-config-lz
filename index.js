@@ -1,37 +1,36 @@
-const base = require('./lib/base.js');
-const react = require('./lib/react.js');
-
 module.exports = {
-    extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended'],
-    env: {
-        browser: true,
-        commonjs: true,
-        es2021: true,
-        jest: true,
-        node: true
+    extends: [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "prettier"
+    ],
+    rules: {
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
     },
+    plugins: ["react", "import", "jsx-a11y"],
     parserOptions: {
-        ecmaVersion: 2021,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true
+        "ecmaVersion": 2022,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
         }
     },
-    rules: {
-        ...base,
-        ...react,
-        // ...prettier,
+    env: {
+        "es6": true,
+        "browser": true,
+        "node": true
     },
     settings: {
-        react: {
-            // Tells eslint-plugin-react to automatically detect the version of React to use
-            version: 'detect',
+        "react": {
+            "version": "detect"
         },
-        'import/resolver': {
-            alias: {
-                map: [['@', './src']],
-                extensions: ['.js', '.jsx'],
-            },
-        },
-    },
-}
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx"]
+            }
+        }
+    }
+};
